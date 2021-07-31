@@ -1,7 +1,8 @@
 import pytest
+import pickle
 from pages.auth_page import AuthPage
 
-def test_authorization(web_browser):
+def test_authorisation(web_browser):
 
     page = AuthPage(web_browser)
 
@@ -12,3 +13,5 @@ def test_authorization(web_browser):
     page.btn.click()
 
     assert page.get_current_url() == 'http://petfriends1.herokuapp.com/all_pets'
+
+    pickle.dump(web_browser.get_cookies(),open("cookies.txt","wb"))
